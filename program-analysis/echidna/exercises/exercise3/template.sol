@@ -10,11 +10,13 @@ import "./mintable.sol";
 ///      ```
 contract TestToken is MintableToken {
     address echidna = msg.sender;
+    int256 public constant TOTAL_MINTABLE = 10_000;
 
     // TODO: update the constructor
-    constructor(int256 totalMintable) MintableToken(totalMintable) {}
+    constructor() MintableToken(TOTAL_MINTABLE) {}
 
     function echidna_test_balance() public view returns (bool) {
         // TODO: add the property
+        return balances[echidna] <= uint256(TOTAL_MINTABLE);
     }
 }

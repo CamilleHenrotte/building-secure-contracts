@@ -12,6 +12,7 @@ contract MintableToken is Token {
     }
 
     function mint(uint256 value) public onlyOwner {
+        require(value <= uint256(type(int256).max));
         require(int256(value) + totalMinted < totalMintable);
         totalMinted += int256(value);
 
